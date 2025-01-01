@@ -1,5 +1,6 @@
 joo: joo.c
 	gcc -Wall -Wextra -O2 joo.c -o $@
+	if [ ! -e joo.conf ]; then echo $(USER) > joo.conf; fi
 
 install:
 	cp joo /usr/bin/
@@ -11,3 +12,6 @@ install:
 uninstall:
 	rm -f /usr/bin/joo /etc/joo.conf
 	if [ -L /usr/bin/sudo ]; then rm /usr/bin/sudo; fi
+
+clean:
+	rm -f joo joo.conf
